@@ -1,0 +1,121 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#signUp {
+    color: white;
+    font-size: medium;
+    margin-left: 10px;
+    padding: 5px;
+    background-color: #0275FC;
+    width: 140px;
+    height: 40px;
+    cursor: pointer;
+    border-color: #5B9FF5;
+    border-radius: 5px;
+}
+
+#signIn {
+    color: white;
+    font-size: medium;
+    margin-left: 10px;
+    padding: 5px;
+    background-color: #44a618;
+    width: 140px;
+    height: 40px;
+    cursor: pointer;
+    border-color: #1c9600;
+    border-radius: 5px;
+}
+#logOut{
+    color: white;
+    font-size: medium;
+    margin-left: 15px;
+    padding: 5px;
+    background-color: #0275FC;
+    width: 150px;
+    cursor: pointer;
+    border-color: #5B9FF5;
+    border-radius: 5px;
+}
+
+div {
+    height: 90vh;
+    font-family: "Arial", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+label {
+    margin-left: 10px;
+}
+
+input {
+    margin: 10px;
+    padding: 5px;
+    outline: none;
+    border-radius: 5px;
+}
+
+input:invalid {
+    border-color: red;
+    background-color: #ffaca9;
+}
+
+input:not(:focus):invalid {
+    border-color: lightgrey;
+    background-color: white;
+}
+
+input:valid {
+    border-color: green;
+    background-color: #dbe6fc;
+}
+
+span {
+    margin-left: 10px;
+    color: #e30000;
+
+}
+
+#btn {
+    color: white;
+    font-size: medium;
+    margin-left: 10px;
+    padding: 5px;
+    background-color: #0275FC;
+    width: 380px;
+    cursor: pointer;
+    border-color: #5B9FF5;
+    border-radius: 5px;
+}
+
+#btn:focus {
+    background-color: #0009f6;
+}
+
+p {
+    margin: 10px;
+}
+
+a {
+    font-size: 18px;
+    font-weight: bold;
+    flood-color: dodgerblue;
+}
+
+h3 {
+    font-family: "Arial", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
