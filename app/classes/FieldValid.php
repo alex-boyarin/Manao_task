@@ -18,8 +18,9 @@ class FieldValid
     public function checkRegFields()
     {
         foreach ($this->arrParam as $key => $value) {
+            $value = UtilClass::sanitizeString($value);
             if ($key !== 'confPass') {
-                if (preg_match(RegExpression::REG_EXP[$key], UtilClass::sanitizeString($value))) {
+                if (preg_match(RegExpression::REG_EXP[$key],$value)) {
                     if ($key === 'password') {
                         $confPass = UtilClass::sanitizeString($this->arrParam['confPass']);
                         if (UtilClass::compare($value, $confPass)) {

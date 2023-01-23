@@ -6,7 +6,7 @@ class UtilClass
 {
     static function sanitizeString($var): string
     {
-        return htmlspecialchars(trim($var));
+        return htmlspecialchars($var);
     }
 
     static function compare($value1, $value2): bool
