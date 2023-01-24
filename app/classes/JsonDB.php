@@ -1,6 +1,7 @@
 <?php
 
 namespace App\classes;
+session_start();
 
 use App\message\ErrMessage;
 use App\message\Message;
@@ -19,8 +20,8 @@ class JsonDB
 
     private function readDB()
     {
-        if (file_exists('../usersDB.json')) {
-            $users = file_get_contents('../usersDB.json');
+        if (file_exists('../dataBase/usersDB.json')) {
+            $users = file_get_contents('../dataBase/usersDB.json');
             return json_decode($users, true);
         }
     }
@@ -43,12 +44,13 @@ class JsonDB
     public function checkUserSignIn(array $arrParam)
     {
         if (!empty($this->arrUsers)) {
-            $result="";
+            $result = "";
             foreach ($this->arrUsers as $usersValue) {
                 if (UtilClass::compare($usersValue['login'], $arrParam['login']) &&
                     UtilClass::compare($usersValue['password'], UtilClass::passEncrypt($arrParam['password']))) {
                     $result = $usersValue;
-                    $this->message['authUser'] = Message::SIGN_IN['authUser'] . " " . $result['name'];
+                    $this->message['authUser'] = Message::SIGN_IN['authUser'];
+                    $_SESSION['userName'] = $usersValue['name'];
                     break;
                 }
             }
@@ -63,8 +65,9 @@ class JsonDB
     function insertInDB(User $user)
     {
         $this->arrUsers[] = $user;
-        file_put_contents('../usersDB.json', json_encode($this->arrUsers));
-        $this->message['authUser'] = Message::SIGN_IN['authUser'] . " " . $user->getName();
+        file_put_contents('../dataBase/usersDB.json', json_encode($this->arrUsers));
+        $this->message['authUser'] = Message::SIGN_IN['authUser'];
+        $_SESSION['userName'] = $user->getName();
     }
 
     public function getErrWriteUser(): array

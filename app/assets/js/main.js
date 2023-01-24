@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     $('#signUp').on("click", function () {
         document.location.href = 'forms/reg_form.php'
@@ -7,6 +8,9 @@ $(document).ready(function () {
         document.location.href = 'forms/auth_form.php';
     });
 
+    $('#logout').on("click", function () {
+        document.location.href = 'logout.php';
+    });
 
     //Запрос на регистрацию
     $("#regForm").on("submit", function (e) {
@@ -32,15 +36,10 @@ $(document).ready(function () {
                 //перебираем вернувшийся массив
                 JSON.parse(result, ((key, value) => {
                     if (key === "authUser") {
-                        $("#regForm").remove();
-                        $("div").append(`<h1>${value}</h1>`).append('<button id="logOut">Выйти</button>');
+                        document.location.href = '../profile/profileUser.php'
                     } else {
                         $(`input[name='${key}'] + span`).text(value);
                     }
-                    //при успешной регистрации можно будет нажать на эту кнопку для выхода
-                    $('#logOut').on("click", function () {
-                        document.location.href = '../index.php';
-                    });
                 }));
             }
         });
@@ -65,16 +64,11 @@ $(document).ready(function () {
                 //перебираем вернувшийся массив
                 JSON.parse(result, ((key, value) => {
                     if (key === "authUser") {
-                        $("#auth").remove();
-                        $("div").append(`<h1>${value}</h1>`).append('<button id="logOut">Выйти</button>');
+                        document.location.href = '../profile/profileUser.php'
                     }
                     if (key === "error") {
                         $(`#${key}`).text(value);
                     }
-                    //при успешной регистрации можно будет нажать на эту кнопку для выхода
-                    $('#logOut').on("click", function () {
-                        document.location.href = '../index.php';
-                    });
                 }));
             }
         });

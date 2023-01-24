@@ -1,0 +1,4 @@
+<Files "usersDB.json">
+ Order Deny
+ Deny from all
+</Files>
